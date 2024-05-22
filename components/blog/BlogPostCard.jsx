@@ -1,7 +1,6 @@
-// components/blog/BlogPostCard.js
 import Link from "next/link";
 import Image from "next/image";
-import { FaArrowRight, FaUser, FaClock } from "react-icons/fa";
+import { FaArrowRight, FaUser, FaClock, FaPen } from "react-icons/fa";
 
 const BlogPostCard = ({ post }) => {
   const featuredImage =
@@ -13,6 +12,15 @@ const BlogPostCard = ({ post }) => {
     .replace(/(<([^>]+)>)/gi, "")
     .replace(/&hellip;/g, "...")
     .slice(0, 100); // Limiting text to 100 characters
+
+  const truncatedTitle =
+    post.title.rendered.length > 50
+      ? `${post.title.rendered.slice(0, 50)}...`
+      : post.title.rendered;
+
+  const category = post._embedded?.["wp:term"]?.find(
+    (term) => term[0]?.taxonomy === "category"
+  )?.[0];
 
   return (
     <div className="border border-gray-300 rounded-lg bg-white text-gray-900 shadow-md hover:shadow-lg transition-shadow duration-300 p-3">
@@ -27,10 +35,23 @@ const BlogPostCard = ({ post }) => {
           />
         </div>
       )}
-      <h2 className="text-lg font-semibold mb-1">{post.title.rendered}</h2>
+      <h2
+        className="text-lg font-semibold mb-1"
+        title={post.title.rendered.length > 60 ? post.title.rendered : ""}
+      >
+        {truncatedTitle}
+      </h2>
       <div className="flex items-center mb-1 text-gray-700 text-sm">
         <FaUser className="mr-1 text-blue-600" />
         {post._embedded?.author[0]?.name}
+        {category && (
+          <>
+            <FaPen className="ml-4 mr-1 text-green-600" />
+            <Link href={`/blog/category/${category.slug}`}>
+              {category.name}
+            </Link>
+          </>
+        )}
       </div>
       <div className="flex items-center mb-2 text-gray-700 text-sm">
         <FaClock className="mr-1 text-yellow-600" />
