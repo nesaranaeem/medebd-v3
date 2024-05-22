@@ -38,7 +38,7 @@ const BlogPostCard = ({ post }) => {
       </div>
       <p className="text-gray-700 mb-3 text-sm">{excerptText}...</p>
       <Link
-        href={`/blog/${post.slug}`}
+        href={`/view/${post.slug}`}
         className="block bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg text-center flex items-center justify-center text-sm"
       >
         Read More <FaArrowRight className="ml-2" />

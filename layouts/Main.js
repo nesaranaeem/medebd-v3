@@ -9,7 +9,7 @@ export default function MainLayout({ children }) {
         <NavBar />
       </div>
       <SearchMenu />
-      <main className="bg-white py-5">{children}</main>
+      <main className="bg-white py-5 text-black">{children}</main>
 
       <Footer />
     </>
