@@ -8,9 +8,9 @@ import {
   FaFacebookF,
   FaTwitter,
   FaLinkedinIn,
+  FaChevronRight,
 } from "react-icons/fa";
-import { useEffect, useState } from "react";
-import LoadingSpinner from "@/components/spinners/LoadingSpinner";
+import BlogRight from "@/components/aside/BlogRight";
 import BlogPostCard from "@/components/blog/BlogPostCard";
 
 export async function getServerSideProps(context) {
@@ -54,6 +54,11 @@ export async function getServerSideProps(context) {
 const BlogPost = ({ post, relatedPosts, categories }) => {
   const shareUrl = typeof window !== "undefined" ? window.location.href : "";
 
+  // Find the category object for breadcrumb
+  const category = post._embedded["wp:term"].find(
+    (term) => term[0]?.taxonomy === "category"
+  )[0];
+
   return (
     <>
       <NextSeo
@@ -81,6 +86,36 @@ const BlogPost = ({ post, relatedPosts, categories }) => {
       />
       <div className="container mx-auto p-4 lg:flex lg:space-x-8">
         <div className="lg:w-3/4">
+          <nav className="mb-4 text-sm">
+            <ol className="list-reset flex text-gray-600 flex-wrap">
+              <li>
+                <Link href="/" className="text-blue-600 hover:text-blue-700">
+                  Home
+                </Link>
+              </li>
+              <FaChevronRight className="mx-2 my-auto" />
+              <li>
+                <Link
+                  href="/blog"
+                  className="text-blue-600 hover:text-blue-700"
+                >
+                  Blog
+                </Link>
+              </li>
+              <FaChevronRight className="mx-2 my-auto" />
+              <li>
+                <Link
+                  href={`/blog/category/${category.slug}`}
+                  className="text-blue-600 hover:text-blue-700"
+                >
+                  {category.name}
+                </Link>
+              </li>
+              <FaChevronRight className="mx-2 my-auto" />
+              <li className="text-gray-500">{post.title.rendered}</li>
+            </ol>
+          </nav>
+
           <article className="bg-white rounded-lg shadow-md p-6 mb-8">
             {post._embedded["wp:featuredmedia"] && (
               <div className="w-full h-64 relative mb-4">
@@ -94,12 +129,14 @@ const BlogPost = ({ post, relatedPosts, categories }) => {
               </div>
             )}
             <h1 className="text-3xl font-bold mb-2">{post.title.rendered}</h1>
-            <div className="flex items-center mb-4 text-gray-700">
-              <FaUser className="mr-2 text-blue-600" />
-              {post._embedded.author[0].name}
-              <FaClock className="ml-4 mr-2 text-yellow-600" />
-              {new Date(post.date).toLocaleDateString()}
-              <div className="flex ml-auto space-x-4 text-gray-700">
+            <div className="flex flex-col sm:flex-row items-center sm:justify-between mb-4 text-gray-700">
+              <div className="flex items-center mb-2 sm:mb-0">
+                <FaUser className="mr-2 text-blue-600" />
+                {post._embedded.author[0].name}
+                <FaClock className="ml-4 mr-2 text-yellow-600" />
+                {new Date(post.date).toLocaleDateString()}
+              </div>
+              <div className="flex space-x-4 text-gray-700">
                 <span className="text-gray-700">Share:</span>
                 <a
                   href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`}
@@ -164,28 +201,7 @@ const BlogPost = ({ post, relatedPosts, categories }) => {
           )}
         </div>
         <div className="lg:w-1/4 p-2">
-          <div className="sticky top-0 bg-gray-100 p-4 rounded-lg shadow-md">
-            <h2 className="text-lg font-bold mb-4 text-center text-gray-900">
-              Blog Categories
-            </h2>
-            <div className="flex flex-col space-y-2">
-              {categories && categories.length > 0 ? (
-                categories.map((category) => (
-                  <Link
-                    key={category.id}
-                    href={`/blog/category/${category.slug}`}
-                    className="block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-center"
-                  >
-                    {category.name}
-                  </Link>
-                ))
-              ) : (
-                <p className="text-center text-gray-700">
-                  No categories available.
-                </p>
-              )}
-            </div>
-          </div>
+          <BlogRight categories={categories} />
         </div>
       </div>
     </>

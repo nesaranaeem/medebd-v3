@@ -13,6 +13,7 @@
     "autoprefixer": "10.4.19",
     "eslint": "9.3.0",
     "eslint-config-next": "14.2.3",
+    "leaflet": "^1.9.4",
     "next": "^14.2.3",
     "next-seo": "^6.5.0",
     "nextjs-progressbar": "^0.0.16",
@@ -22,6 +23,7 @@
     "react-dom": "^18.3.1",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^5.2.1",
+    "react-leaflet": "^4.2.1",
     "react-tooltip": "^5.26.4",
     "tailwindcss": "3.4.3"
   }

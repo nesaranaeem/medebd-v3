@@ -66,3 +66,32 @@ body {
 .suggestion-item:hover {
   background-color: #f0f0f0;
 }
+
+/* Add this to your global CSS or a relevant stylesheet */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.breadcrumb li {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb li a {
+  text-decoration: none;
+  color: #3b82f6; /* Tailwind's blue-600 */
+}
+
+.breadcrumb li a:hover {
+  color: #2563eb; /* Tailwind's blue-700 */
+}
+
+.breadcrumb li .icon {
+  margin: 0 0.5rem;
+}
+
+#nprogress .bar {
+  border: 1px solid white;
+}

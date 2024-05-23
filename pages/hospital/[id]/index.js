@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaSpinner } from "react-icons/fa";
+import { FaSpinner, FaHome, FaChevronRight, FaInfo } from "react-icons/fa";
 import { BreadcrumbJsonLd, NextSeo } from "next-seo";
 import { apiBaseURL } from "@/utils/api/Api";
 import Link from "next/link";
@@ -48,9 +48,9 @@ export default function HospitalDetailsPage({ hospitalDetails }) {
 
   if (isLoading) {
     return (
-      <>
+      <div className="flex items-center justify-center h-20">
         <FaSpinner className="animate-spin h-8 w-8 text-indigo-500" />
-      </>
+      </div>
     );
   }
 
@@ -81,73 +81,51 @@ export default function HospitalDetailsPage({ hospitalDetails }) {
             title={`${hospitalDetails?.name} - Details`}
             description={`Hospital details for ${hospitalDetails?.name}`}
           />
-          <div className="flex flex-col items-center p-4 border rounded-lg bg-gray-800 text-white shadow-md w-full mx-auto">
-            <div className="text-xl font-bold text-center text-white">
-              Hospital Details
-            </div>
-            <nav
-              className="flex my-2 px-5 py-3 bg-gray-600 text-white rounded-lg mx-auto w-full"
-              aria-label="Breadcrumb"
-            >
-              <ol className="inline-flex items-center space-x-1 md:space-x-3">
-                <li className="inline-flex items-center">
-                  <Link
-                    href="/"
-                    className="inline-flex items-center text-sm font-medium text-white hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
-                  >
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <div className="flex items-center">
-                    <svg
-                      className="w-3 h-3 mx-1 text-white"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 6 10"
-                    >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="m1 9 4-4-4-4"
-                      />
-                    </svg>
+          <div className="container mx-auto p-4">
+            <div className="bg-gray-100 p-4 border rounded-lg shadow-md text-black mb-4">
+              <h1 className="text-xl font-bold text-center mb-4 flex items-center justify-center">
+                <FaInfo className="mr-2 text-indigo-500" />
+                Hospital Details
+              </h1>
+              <nav
+                className="flex mb-4 px-5 py-3 bg-gray-600 text-white rounded-lg max-w-full overflow-auto"
+                aria-label="Breadcrumb"
+              >
+                <ol className="inline-flex items-center space-x-1 md:space-x-3">
+                  <li className="inline-flex items-center">
                     <Link
-                      href="/hospitals"
-                      className="ml-1 text-sm font-medium text-white hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white"
+                      href="/"
+                      passHref
+                      className="inline-flex items-center text-sm font-medium text-white hover:text-blue-600"
                     >
-                      Hospitals
+                      <FaHome className="w-4 h-4 mr-2" />
+                      Home
                     </Link>
-                  </div>
-                </li>
-                <li aria-current="page">
-                  <div className="flex items-center">
-                    <svg
-                      className="w-3 h-3 mx-1 text-white"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 6 10"
-                    >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="m1 9 4-4-4-4"
-                      />
-                    </svg>
-                    <span className="ml-1 text-sm font-medium text-white md:ml-2 dark:text-gray-400">
-                      {hospitalDetails.name}
-                    </span>
-                  </div>
-                </li>
-              </ol>
-            </nav>
-            <HospitalDetails hospitalDetails={hospitalDetails} />
+                  </li>
+                  <li>
+                    <div className="flex items-center">
+                      <FaChevronRight className="w-3 h-3 mx-1 text-white" />
+                      <Link
+                        href="/hospitals"
+                        passHref
+                        className="ml-1 text-sm font-medium text-white hover:text-blue-600 md:ml-2"
+                      >
+                        Hospitals
+                      </Link>
+                    </div>
+                  </li>
+                  <li aria-current="page">
+                    <div className="flex items-center">
+                      <FaChevronRight className="w-3 h-3 mx-1 text-white" />
+                      <span className="ml-1 text-sm font-medium text-white md:ml-2">
+                        {hospitalDetails?.name}
+                      </span>
+                    </div>
+                  </li>
+                </ol>
+              </nav>
+              <HospitalDetails hospitalDetails={hospitalDetails} />
+            </div>
           </div>
         </>
       )}

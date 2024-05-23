@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { FaSpinner } from "react-icons/fa";
+import { FaSpinner, FaInfo, FaHome, FaChevronRight } from "react-icons/fa";
 import { BreadcrumbJsonLd, NextSeo } from "next-seo";
-import { FaInfo } from "react-icons/fa6";
 import { apiBaseURL } from "@/utils/api/Api";
 import DoctorDetails from "@/components/doctor/DoctorDetails";
 
@@ -49,9 +48,9 @@ export default function DoctorDetailsPage({ doctorDetails }) {
 
   if (isLoading) {
     return (
-      <>
+      <div className="flex items-center justify-center h-20">
         <FaSpinner className="animate-spin h-8 w-8 text-indigo-500" />
-      </>
+      </div>
     );
   }
 
@@ -76,95 +75,55 @@ export default function DoctorDetailsPage({ doctorDetails }) {
           },
         ]}
       />
-      <div className="flex flex-col items-center p-4 border rounded-lg bg-gray-800 text-white shadow-md w-full mx-auto">
-        <div className="flex items-center justify-center h-6 w-6 bg-indigo-100 rounded-full mb-2">
-          <FaInfo className="h-4 w-4 text-indigo-500" />
-        </div>
-        <div className="text-xl font-bold text-center text-white">
-          Doctor Details
-        </div>
-        {doctorDetails ? (
-          <div className="mt-4">
-            <NextSeo
-              title={`${doctorDetails?.title} ${doctorDetails?.name} - Details`}
-              description={`${doctorDetails?.title} ${doctorDetails?.name} ${doctorDetails?.qualification} ${doctorDetails?.designation}`}
-            />
-            <nav
-              className="flex my-2 px-5 py-3 bg-gray-600 text-white rounded-lg mx-auto w-full"
-              aria-label="Breadcrumb"
-            >
-              <ol className="inline-flex items-center space-x-1 md:space-x-3">
-                <li className="inline-flex items-center">
+      <NextSeo
+        title={`${doctorDetails?.title} ${doctorDetails?.name} - Details`}
+        description={`${doctorDetails?.title} ${doctorDetails?.name} ${doctorDetails?.qualification} ${doctorDetails?.designation}`}
+      />
+      <div className="container mx-auto p-4">
+        <div className="bg-gray-100 p-4 border rounded-lg shadow-md text-black mb-4">
+          <h1 className="text-xl font-bold text-center mb-4 flex items-center justify-center">
+            <FaInfo className="mr-2 text-indigo-500" />
+            Doctor Details
+          </h1>
+          <nav
+            className="flex mb-4 px-5 py-3 bg-gray-600 text-white rounded-lg max-w-full overflow-auto"
+            aria-label="Breadcrumb"
+          >
+            <ol className="inline-flex items-center space-x-1 md:space-x-3">
+              <li className="inline-flex items-center">
+                <Link
+                  href="/"
+                  passHref
+                  className="inline-flex items-center text-sm font-medium text-white hover:text-blue-600"
+                >
+                  <FaHome className="w-4 h-4 mr-2" />
+                  Home
+                </Link>
+              </li>
+              <li>
+                <div className="flex items-center">
+                  <FaChevronRight className="w-3 h-3 mx-1 text-white" />
                   <Link
-                    href="/"
-                    className="inline-flex items-center text-sm font-medium text-white hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
+                    href="/doctors"
+                    passHref
+                    className="ml-1 text-sm font-medium text-white hover:text-blue-600 md:ml-2"
                   >
-                    <svg
-                      className="w-3 h-3 mr-2.5"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
-                    </svg>
-                    Home
+                    Doctors
                   </Link>
-                </li>
-                <li>
-                  <div className="flex items-center">
-                    <svg
-                      className="w-3 h-3 mx-1 text-white"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 6 10"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="m1 9 4-4-4-4"
-                      />
-                    </svg>
-                    <Link
-                      href="/doctors"
-                      className="ml-1 text-sm font-medium text-white hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white"
-                    >
-                      Doctors
-                    </Link>
-                  </div>
-                </li>
-                <li aria-current="page">
-                  <div className="flex items-center">
-                    <svg
-                      className="w-3 h-3 mx-1 text-white"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 6 10"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="m1 9 4-4-4-4"
-                      />
-                    </svg>
-                    <span className="ml-1 text-sm font-medium text-white md:ml-2 dark:text-gray-400">
-                      {doctorDetails?.title} {doctorDetails?.name}
-                    </span>
-                  </div>
-                </li>
-              </ol>
-            </nav>
-            <DoctorDetails doctorDetails={doctorDetails} />
-          </div>
-        ) : (
-          <FaSpinner className="animate-spin h-8 w-8 text-indigo-500" />
-        )}
+                </div>
+              </li>
+              <li aria-current="page">
+                <div className="flex items-center">
+                  <FaChevronRight className="w-3 h-3 mx-1 text-white" />
+                  <span className="ml-1 text-sm font-medium text-white md:ml-2">
+                    {doctorDetails?.title} {doctorDetails?.name}
+                  </span>
+                </div>
+              </li>
+            </ol>
+          </nav>
+          <DoctorDetails doctorDetails={doctorDetails} />
+        </div>
       </div>
     </>
   );

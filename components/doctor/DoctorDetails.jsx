@@ -1,72 +1,83 @@
 import {
-  FaBuildingCircleArrowRight,
-  FaCircleUser,
-  FaMagnifyingGlassArrowRight,
-  FaMagnifyingGlassPlus,
+  FaBuilding,
+  FaHospitalUser,
+  FaGraduationCap,
+  FaCircleInfo,
   FaStar,
 } from "react-icons/fa6";
+
 const DoctorDetails = ({ doctorDetails }) => {
   return (
-    <>
-      <div className="bg-gray-800 mx-auto border border-gray-200 rounded-lg shadow p-4 max-w-md">
-        <>
-          <h1 className="text-lg md:text-2xl text-center font-bold text-white mb-2 md:mb-4">
-            {doctorDetails?.title} {doctorDetails?.name}
-          </h1>
-          <div className="flex items-center border-2 border-gray-500 p-3">
-            <span className="font-sans text-base md:text-lg ml-1">
-              {doctorDetails.qualification}
-            </span>
+    <div className="bg-white mx-auto border border-gray-200 rounded-lg shadow p-4 max-w-md">
+      <h1 className="text-lg md:text-2xl text-center font-bold text-white mb-2 md:mb-4">
+        {doctorDetails?.title} {doctorDetails?.name}
+      </h1>
+      <div className="space-y-4">
+        <div className="p-4 shadow-xl transition">
+          <div className="flex items-center bg-blue-600 p-2 rounded-xl">
+            <FaGraduationCap className="mr-3 text-white text-lg" />
+            <h2 className="font-bold text-white">Qualification:</h2>
           </div>
-          <div className="space-y-2 md:space-y-3 text-white">
-            <div className="flex items-center border-2 border-gray-500 p-3">
-              <FaCircleUser className="text-purple-400 md:text-lg" />
-              <span className="font-bold ml-3">Gender:</span>
-              <span className="font-sans text-base md:text-lg ml-1">
-                {doctorDetails.gender}
-              </span>
-            </div>
-            <div className="flex items-center border-2 border-gray-500 p-3">
-              <FaStar className="text-purple-400 md:text-lg" />
-              <span className="font-bold ml-3">Title:</span>
-              <span className="font-sans text-base md:text-lg ml-1">
-                {doctorDetails.title}
-              </span>
-            </div>
-            <div className="flex items-center border-2 border-gray-500 p-3">
-              <FaMagnifyingGlassPlus className="text-purple-400 md:text-lg" />
-              <span className="font-bold ml-3">Designation:</span>
-              <span className="font-sans text-base md:text-lg ml-1">
-                {doctorDetails.designation}
-              </span>
-            </div>
-
-            <div className="flex items-center border-2 border-gray-500 p-3">
-              <FaBuildingCircleArrowRight className="text-purple-400 md:text-lg" />
-              <span className="font-bold ml-3">Organization:</span>
-
-              <span className="font-sans text-base md:text-lg">
-                {doctorDetails.doctorOrganizationName}
-              </span>
-            </div>
-            <div className="flex items-center border-2 border-gray-500 p-3">
-              <FaMagnifyingGlassArrowRight className="text-purple-400 md:text-lg" />
-              <span className="font-bold ml-3">Speciality:</span>
-              <span className="font-sans text-base md:text-lg ml-1">
-                {doctorDetails.specialityName}
-              </span>
-            </div>
-            <div className="flex items-center border-2 border-gray-500 p-3">
-              <FaMagnifyingGlassArrowRight className="text-purple-400 md:text-lg" />
-              <span className="font-bold ml-3">বিশেষত্ব:</span>
-              <span className="font-sans text-base md:text-lg ml-1">
-                {doctorDetails.specialityNameBangla}
-              </span>
-            </div>
+          <div className="text-base font-medium mt-2 bg-blue-100 p-4 rounded-xl text-gray-800">
+            {doctorDetails?.qualification}
           </div>
-        </>
+        </div>
+        <div className="p-4 shadow-xl transition">
+          <div className="flex items-center bg-purple-600 p-2 rounded-xl">
+            <FaHospitalUser className="mr-3 text-white text-lg" />
+            <h2 className="font-bold text-white">Gender:</h2>
+          </div>
+          <div className="text-base font-medium mt-2 bg-purple-100 p-4 rounded-xl text-gray-800">
+            {doctorDetails?.gender}
+          </div>
+        </div>
+        <div className="p-4 shadow-xl transition">
+          <div className="flex items-center bg-yellow-600 p-2 rounded-xl">
+            <FaStar className="mr-3 text-white text-lg" />
+            <h2 className="font-bold text-white">Title:</h2>
+          </div>
+          <div className="text-base font-medium mt-2 bg-yellow-100 p-4 rounded-xl text-gray-800">
+            {doctorDetails?.title}
+          </div>
+        </div>
+        <div className="p-4 shadow-xl transition">
+          <div className="flex items-center bg-red-600 p-2 rounded-xl">
+            <FaCircleInfo className="mr-3 text-white text-lg" />
+            <h2 className="font-bold text-white">Designation:</h2>
+          </div>
+          <div className="text-base font-medium mt-2 bg-red-100 p-4 rounded-xl text-gray-800">
+            {doctorDetails?.designation}
+          </div>
+        </div>
+        <div className="p-4 shadow-xl transition">
+          <div className="flex items-center bg-green-600 p-2 rounded-xl">
+            <FaBuilding className="mr-3 text-white text-lg" />
+            <h2 className="font-bold text-white">Organization:</h2>
+          </div>
+          <div className="text-base font-medium mt-2 bg-green-100 p-4 rounded-xl text-gray-800">
+            {doctorDetails?.doctorOrganizationName}
+          </div>
+        </div>
+        <div className="p-4 shadow-xl transition">
+          <div className="flex items-center bg-teal-600 p-2 rounded-xl">
+            <FaCircleInfo className="mr-3 text-white text-lg" />
+            <h2 className="font-bold text-white">Speciality:</h2>
+          </div>
+          <div className="text-base font-medium mt-2 bg-teal-100 p-4 rounded-xl text-gray-800">
+            {doctorDetails?.specialityName}
+          </div>
+        </div>
+        <div className="p-4 shadow-xl transition">
+          <div className="flex items-center bg-teal-600 p-2 rounded-xl">
+            <FaCircleInfo className="mr-3 text-white text-lg" />
+            <h2 className="font-bold text-white">বিশেষত্ব:</h2>
+          </div>
+          <div className="text-base font-medium mt-2 bg-teal-100 p-4 rounded-xl text-gray-800">
+            {doctorDetails?.specialityNameBangla}
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

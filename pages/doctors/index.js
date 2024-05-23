@@ -39,24 +39,22 @@ export default function DoctorsPage({
   return (
     <>
       <NextSeo
-        title={`Doctors | ${
-          currentPage < 1 ? "" : `Page ${currentPage} of ${totalPages} |`
-        } Total ${totalResults} Doctors`}
+        title={`Doctors | Page ${currentPage} of ${totalPages} | Total ${totalResults} Doctors`}
         description={`Browse Doctor from the total ${totalResults} doctors.`}
       />
 
       {isLoading ? (
         <div className="flex items-center justify-center h-20">
-          <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-indigo-500"></div>
+          <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-blue-600"></div>
         </div>
       ) : (
         <>
-          <div className="flex justify-center py-2">
-            <h1 className="text-xl text-center font-bold p-3 text-white border-2 border-gray-500">
+          <div className="flex justify-center py-4">
+            <h1 className="text-2xl text-center font-bold p-3 text-white border-2 border-blue-500 bg-blue-600 rounded-lg shadow-lg">
               Doctors List
             </h1>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
             {doctorsList?.map((item) => (
               <DoctorCard key={item._id} doctor={item} />
             ))}
@@ -66,7 +64,7 @@ export default function DoctorsPage({
               {currentPage > 1 && (
                 <Link
                   href={`?page=${currentPage - 1}`}
-                  className="px-2 py-2.5 text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg"
+                  className="px-3 py-2 text-white bg-blue-500 hover:bg-blue-700 rounded-lg"
                 >
                   &lt;
                 </Link>
@@ -74,7 +72,7 @@ export default function DoctorsPage({
               {currentPage > 2 && (
                 <Link
                   href={`?page=${currentPage - 2}`}
-                  className="px-2 py-2.5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg"
+                  className="px-3 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-lg"
                 >
                   {currentPage - 2}
                 </Link>
@@ -82,18 +80,18 @@ export default function DoctorsPage({
               {currentPage > 1 && (
                 <Link
                   href={`?page=${currentPage - 1}`}
-                  className="px-2 py-2.5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg"
+                  className="px-3 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-lg"
                 >
                   {currentPage - 1}
                 </Link>
               )}
-              <button className="px-2 py-2.5 bg-green-500 text-white font-bold rounded-lg">
+              <button className="px-3 py-2 bg-green-600 text-white rounded-lg cursor-default">
                 {currentPage}
               </button>
               {currentPage < totalPages && (
                 <Link
                   href={`?page=${currentPage + 1}`}
-                  className="px-2 py-2.5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg"
+                  className="px-3 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-lg"
                 >
                   {currentPage + 1}
                 </Link>
@@ -101,7 +99,7 @@ export default function DoctorsPage({
               {currentPage < totalPages - 1 && (
                 <Link
                   href={`?page=${currentPage + 2}`}
-                  className="px-2 py-2.5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg"
+                  className="px-3 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-lg"
                 >
                   {currentPage + 2}
                 </Link>
@@ -109,13 +107,13 @@ export default function DoctorsPage({
               {currentPage < totalPages && (
                 <Link
                   href={`?page=${currentPage + 1}`}
-                  className="px-2 py-2.5 text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg"
+                  className="px-3 py-2 text-white bg-blue-500 hover:bg-blue-700 rounded-lg"
                 >
                   &gt;
                 </Link>
               )}
             </div>
-            <p className="mt-2 text-white">
+            <p className="mt-2 text-gray-700">
               Page {currentPage} of {totalPages}
             </p>
           </div>
