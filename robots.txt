@@ -1,0 +1,11 @@
+# public/robots.txt
+
+# Block access to the admin and API routes
+User-agent: *
+Disallow: /api/
+Disallow: /admin/
+Allow: /
+
+# Specify the location of the sitemaps
+Sitemap: https://medebd.com/sitemaps/blog-categories.xml
+Sitemap: https://medebd.com/sitemaps/blog-posts.xml

@@ -21,7 +21,21 @@ const HospitalDetails = ({ hospitalDetails }) => {
       <h1 className="text-lg md:text-2xl text-center font-bold text-black mb-2 md:mb-4">
         {name}
       </h1>
-      
+      {latitude && longitude && (
+
+          
+          
+          
+        
+<div className="mb-4">
+  <div className="mb-2 flex items-center bg-green-600 p-2 rounded-xl">
+    <FaMapMarkerAlt className="mr-3 text-white text-lg" />
+    <h2 className="font-bold text-white">Maps:</h2>
+  </div>
+  <Map latitude={latitude} longitude={longitude} />
+</div>
+
+)}
       <div className="space-y-4">
         <div className="p-4 shadow-xl transition">
           <div className="flex items-center bg-blue-600 p-2 rounded-xl">
@@ -79,21 +93,7 @@ const HospitalDetails = ({ hospitalDetails }) => {
             </div>
           </div>
         )}
-        {latitude && longitude && (
-
-          
-          
-          
         
-        <div className="mb-4">
-          <div className="mb-2 flex items-center bg-green-600 p-2 rounded-xl">
-            <FaMapMarkerAlt className="mr-3 text-white text-lg" />
-            <h2 className="font-bold text-white">Maps:</h2>
-          </div>
-          <Map latitude={latitude} longitude={longitude} />
-        </div>
-
-      )}
       </div>
     </div>
   );

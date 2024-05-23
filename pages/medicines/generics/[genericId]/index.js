@@ -46,24 +46,22 @@ export default function MedicinesPage({
   return (
     <>
       <NextSeo
-        title={`Medicine Generics | ${
-          currentPage < 1 ? "" : `Page ${currentPage} of ${totalPages} |`
-        } Total ${totalResults} Medicines`}
+        title={`Medicine Generics | Page ${currentPage} of ${totalPages} | Total ${totalResults} Medicines`}
         description={`Browse Medicine list from the total ${totalResults} medicines.`}
       />
 
       {isLoading ? (
         <div className="flex items-center justify-center h-20">
-          <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-indigo-500"></div>
+          <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-blue-600"></div>
         </div>
       ) : (
         <>
-          <div className="flex justify-center py-2">
-            <h1 className="text-xl text-center font-bold p-3 text-white border-2 border-gray-500">
+          <div className="flex justify-center py-4">
+            <h1 className="text-2xl text-center font-bold p-3 text-white border-2 border-blue-500 bg-blue-600 rounded-lg shadow-lg">
               Browse Medicines
             </h1>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
             {medicineData?.map((item) => (
               <MedicineCard key={item._id} medicine={item} />
             ))}
@@ -72,72 +70,57 @@ export default function MedicinesPage({
             <div className="flex space-x-2">
               {currentPage > 1 && (
                 <Link
-                  href={`/medicines/generics/${genericId}?page=${
-                    currentPage - 1
-                  }`}
-                  className="px-2 py-2.5 text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg"
+                  href={`/medicines/generics/${genericId}?page=${currentPage - 1}`}
+                  className="px-3 py-2 text-white bg-blue-500 hover:bg-blue-700 rounded-lg"
                 >
                   &lt;
                 </Link>
               )}
               {currentPage > 2 && (
                 <Link
-                  href={`/medicines/generics/${genericId}?page=${
-                    currentPage - 2
-                  }`}
-                  className="px-2 py-2.5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg"
+                  href={`/medicines/generics/${genericId}?page=${currentPage - 2}`}
+                  className="px-3 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-lg"
                 >
                   {currentPage - 2}
                 </Link>
               )}
               {currentPage > 1 && (
                 <Link
-                  href={`/medicines/generics/${genericId}?page=${
-                    currentPage - 1
-                  }`}
-                  className="px-2 py-2.5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg"
+                  href={`/medicines/generics/${genericId}?page=${currentPage - 1}`}
+                  className="px-3 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-lg"
                 >
                   {currentPage - 1}
                 </Link>
               )}
-              <button
-                className="px-2 py-2.5 bg-green-500 text-white font-bold rounded-lg"
-                disabled
-              >
+              <button className="px-3 py-2 bg-green-600 text-white rounded-lg cursor-default" disabled>
                 {currentPage}
               </button>
               {currentPage < totalPages && (
                 <Link
-                  href={`/medicines/generics/${genericId}?page=${
-                    currentPage + 1
-                  }`}
-                  className="px-2 py-2.5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg"
+                  href={`/medicines/generics/${genericId}?page=${currentPage + 1}`}
+                  className="px-3 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-lg"
                 >
                   {currentPage + 1}
                 </Link>
               )}
               {currentPage < totalPages - 1 && (
                 <Link
-                  href={`/medicines/generics/${genericId}?page=${
-                    currentPage + 2
-                  }`}
-                  className="px-2 py-2.5 text-white bg-blue-700 hover.bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg"
+                  href={`/medicines/generics/${genericId}?page=${currentPage + 2}`}
+                  className="px-3 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-lg"
                 >
                   {currentPage + 2}
                 </Link>
               )}
               {currentPage < totalPages && (
                 <Link
-                  href={`/medicines/generics/${genericId}?page=${
-                    currentPage + 1
-                  }`}
-                  className="px-2 py-2.5 text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg"
+                  href={`/medicines/generics/${genericId}?page=${currentPage + 1}`}
+                  className="px-3 py-2 text-white bg-blue-500 hover:bg-blue-700 rounded-lg"
                 >
                   &gt;
                 </Link>
               )}
             </div>
-            <p className="mt-2 text-white">
+            <p className="mt-2 text-gray-700">
               Page {currentPage} of {totalPages}
             </p>
           </div>

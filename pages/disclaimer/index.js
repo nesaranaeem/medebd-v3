@@ -5,19 +5,13 @@ const DisclaimerPage = () => {
     <>
       <NextSeo
         title="Disclaimer"
-        description="The information provided on medebd.com is for general informational
-        purposes only. We do our best to provide accurate and up-to-date
-        information, but we make no representations or warranties of any kind
-        about the completeness, accuracy, reliability, suitability or
-        availability with respect to the website or the information, products,
-        services, or related graphics contained on the website for any
-        purpose."
+        description="The information provided on medebd.com is for general informational purposes only. We do our best to provide accurate and up-to-date information, but we make no representations or warranties of any kind about the completeness, accuracy, reliability, suitability or availability with respect to the website or the information, products, services, or related graphics contained on the website for any purpose."
       />
       <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-        <h2 className="text-2xl text-center my-4 font-extrabold text-white">
+        <h2 className="text-3xl text-center my-4 font-extrabold text-gray-800">
           Disclaimer
         </h2>
-        <p className="mb-3 font-normal text-white">
+        <p className="mb-3 font-normal text-gray-700">
           The information provided on medebd.com is for general informational
           purposes only. We do our best to provide accurate and up-to-date
           information, but we make no representations or warranties of any kind

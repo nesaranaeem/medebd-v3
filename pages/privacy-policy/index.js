@@ -6,23 +6,21 @@ const PrivacyPolicyPage = () => {
     <>
       <NextSeo
         title="Privacy Policy"
-        description="Privacy Policy For Medebd.
-
-        For general inquiries, please use the details below to contact us. We will do our best to respond to your message."
+        description="Privacy Policy for Medebd. Learn about how we collect, use, and disclose your personal information when you visit or use our website."
       />
       <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-        <h2 className="text-2xl text-center my-4 font-extrabold text-white">
+        <h2 className="text-3xl text-center my-4 font-extrabold text-gray-800">
           Privacy Policy
         </h2>
-        <p className="mb-3 font-normal text-white">
+        <p className="mb-3 font-normal text-gray-700">
           At medebd.com, we take the privacy of our users seriously. This
           Privacy Policy explains how we collect, use, and disclose your
           personal information when you visit or use our website.
         </p>
-        <h2 className="text-xl my-2 font-extrabold text-white">
+        <h2 className="text-2xl my-2 font-extrabold text-gray-800">
           Information Collection and Use
         </h2>
-        <p className="mb-3 font-normal text-white">
+        <p className="mb-3 font-normal text-gray-700">
           We collect information from you when you use our website, such as when
           you search for doctors, hospitals, or medicine, or when you create an
           account. This information may include your name, email address, phone
@@ -34,10 +32,10 @@ const PrivacyPolicyPage = () => {
           analyze website usage, troubleshoot technical issues, and detect and
           prevent fraud.
         </p>
-        <h2 className="text-xl my-2 font-extrabold text-white">
+        <h2 className="text-2xl my-2 font-extrabold text-gray-800">
           Cookies and Tracking Technologies
         </h2>
-        <p className="mb-3 font-normal text-white">
+        <p className="mb-3 font-normal text-gray-700">
           We use cookies and other tracking technologies to collect information
           about your use of our website. Cookies are small text files that are
           stored on your device when you visit a website. They help us remember
@@ -46,10 +44,10 @@ const PrivacyPolicyPage = () => {
           settings. However, please note that disabling cookies may limit your
           ability to use certain features of our website.
         </p>
-        <h2 className="text-xl my-2 font-extrabold text-white">
+        <h2 className="text-2xl my-2 font-extrabold text-gray-800">
           Google Analytics
         </h2>
-        <p className="mb-3 font-normal text-white">
+        <p className="mb-3 font-normal text-gray-700">
           We use Google Analytics, a web analysis service provided by Google, to
           track and analyze website usage. Google Analytics uses cookies to help
           us understand how visitors interact with our website. The information
@@ -58,10 +56,10 @@ const PrivacyPolicyPage = () => {
           stored by Google. You can control the use of Google Analytics cookies
           through the Google Analytics Opt-out Browser Add-on.
         </p>
-        <h2 className="text-xl my-2 font-extrabold text-white">
+        <h2 className="text-2xl my-2 font-extrabold text-gray-800">
           Information Sharing and Disclosure
         </h2>
-        <p className="mb-3 font-normal text-white">
+        <p className="mb-3 font-normal text-gray-700">
           We may share your personal information with third parties to provide
           and improve our services, to comply with legal and regulatory
           requirements, and to protect the rights and safety of our users and
@@ -76,41 +74,42 @@ const PrivacyPolicyPage = () => {
           disclosure is necessary to protect the rights and safety of our users
           and others.
         </p>
-        <h2 className="text-xl my-2 font-extrabold text-white">
+        <h2 className="text-2xl my-2 font-extrabold text-gray-800">
           Data Security
         </h2>
-        <p className="mb-3 font-normal text-white">
+        <p className="mb-3 font-normal text-gray-700">
           We take reasonable steps to protect your personal information from
           unauthorized access, use, or disclosure. However, please note that no
           internet transmission is ever completely secure or error-free. In
           particular, email sent to or from this website may not be secure.
         </p>
-        <h2 className="text-xl my-2 font-extrabold text-white">
+        <h2 className="text-2xl my-2 font-extrabold text-gray-800">
           Links to Other Websites
         </h2>
-        <p className="mb-3 font-normal text-white">
+        <p className="mb-3 font-normal text-gray-700">
           Our website may contain links to other websites. Please note that we
           are not responsible for the privacy practices of these other websites.
           We encourage you to read the privacy policies of any website you
           visit.
         </p>
-        <h2 className="text-xl my-2 font-extrabold text-white">
+        <h2 className="text-2xl my-2 font-extrabold text-gray-800">
           Changes to this Privacy Policy
         </h2>
-        <p className="mb-3 font-normal text-white">
+        <p className="mb-3 font-normal text-gray-700">
           We may update this Privacy Policy from time to time. If we make
           changes to this Privacy Policy, we will post the updated policy on
           this page and update the Effective Date above. We encourage you to
           review this Privacy Policy periodically to stay informed about how we
           protect your personal information.
         </p>
-        <h2 className="text-xl my-2 font-extrabold text-white">Contact Us</h2>
-        <p className="mb-3 font-normal text-white">
+        <h2 className="text-2xl my-2 font-extrabold text-gray-800">Contact Us</h2>
+        <p className="mb-3 font-normal text-gray-700">
           If you have any questions or concerns about this Privacy Policy,
-          Please{" "}
-          <Link className="text-amber-900 font-bold" href="/contact">
-            Contact
+          please{" "}
+          <Link className="text-blue-600 font-bold" href="/contact">
+            contact us
           </Link>
+          .
         </p>
       </div>
     </>

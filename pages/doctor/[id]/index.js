@@ -115,7 +115,7 @@ export default function DoctorDetailsPage({ doctorDetails }) {
               <li aria-current="page">
                 <div className="flex items-center">
                   <FaChevronRight className="w-3 h-3 mx-1 text-white" />
-                  <span className="ml-1 text-sm font-medium text-white md:ml-2">
+                  <span className="ml-1 text-sm font-medium text-black md:ml-2">
                     {doctorDetails?.title} {doctorDetails?.name}
                   </span>
                 </div>

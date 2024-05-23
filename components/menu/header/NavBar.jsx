@@ -143,7 +143,8 @@ const DropdownMenu = ({ title, items }) => {
 const DropdownMenuMobile = ({ title, items, closeMenu }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => {
+  const toggleMenu = (e) => {
+    e.stopPropagation();
     setIsOpen(!isOpen);
   };
 
