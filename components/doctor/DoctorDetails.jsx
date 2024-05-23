@@ -9,7 +9,7 @@ import {
 const DoctorDetails = ({ doctorDetails }) => {
   return (
     <div className="bg-white mx-auto border border-gray-200 rounded-lg shadow p-4 max-w-md">
-      <h1 className="text-lg md:text-2xl text-center font-bold text-white mb-2 md:mb-4">
+      <h1 className="text-lg md:text-2xl text-center font-bold text-black mb-2 md:mb-4">
         {doctorDetails?.title} {doctorDetails?.name}
       </h1>
       <div className="space-y-4">
