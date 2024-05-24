@@ -116,7 +116,7 @@ const BlogPost = ({ post, relatedPosts, categories }) => {
             </ol>
           </nav>
 
-          <article className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <article className="bg-white rounded-lg shadow-md p-6 mb-8 lg:p-24">
             {post._embedded["wp:featuredmedia"] && (
               <div className="w-full h-64 relative mb-4">
                 <Image
@@ -164,10 +164,11 @@ const BlogPost = ({ post, relatedPosts, categories }) => {
                 </a>
               </div>
             </div>
-            <div
-              className="post-content mb-4"
-              dangerouslySetInnerHTML={{ __html: post.content.rendered }}
-            />
+            <div className="prose lg:prose-xl prose-img:rounded-lg prose-img:mx-auto prose-table:w-full prose-table:border-collapse prose-th:text-left prose-th:font-semibold prose-th:border prose-th:border-gray-300 prose-td:border prose-td:border-gray-300 mb-4">
+              <div
+                dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+              />
+            </div>
             {post.tags.length > 0 && (
               <div className="mt-4">
                 <h2 className="text-xl font-semibold mb-2">Tags:</h2>
