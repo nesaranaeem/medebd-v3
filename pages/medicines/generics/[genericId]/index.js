@@ -10,7 +10,7 @@ export async function getServerSideProps({ query, params }) {
   const genericId = params.genericId; // Extract genericId from params
   const apikey = process.env.NEXT_PUBLIC_API_KEY;
   const response = await fetch(
-    `${apiBaseURL}medicine?apikey=${apikey}&genericId=${genericId}&page=${page}&limit=12`
+    `${apiBaseURL}medicine/searchByGeneric?id=${genericId}&apikey=${apikey}&page=${page}&limit=12`
   );
   const data = await response.json();
 
@@ -70,7 +70,9 @@ export default function MedicinesPage({
             <div className="flex space-x-2">
               {currentPage > 1 && (
                 <Link
-                  href={`/medicines/generics/${genericId}?page=${currentPage - 1}`}
+                  href={`/medicines/generics/${genericId}?page=${
+                    currentPage - 1
+                  }`}
                   className="px-3 py-2 text-white bg-blue-500 hover:bg-blue-700 rounded-lg"
                 >
                   &lt;
@@ -78,7 +80,9 @@ export default function MedicinesPage({
               )}
               {currentPage > 2 && (
                 <Link
-                  href={`/medicines/generics/${genericId}?page=${currentPage - 2}`}
+                  href={`/medicines/generics/${genericId}?page=${
+                    currentPage - 2
+                  }`}
                   className="px-3 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-lg"
                 >
                   {currentPage - 2}
@@ -86,18 +90,25 @@ export default function MedicinesPage({
               )}
               {currentPage > 1 && (
                 <Link
-                  href={`/medicines/generics/${genericId}?page=${currentPage - 1}`}
+                  href={`/medicines/generics/${genericId}?page=${
+                    currentPage - 1
+                  }`}
                   className="px-3 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-lg"
                 >
                   {currentPage - 1}
                 </Link>
               )}
-              <button className="px-3 py-2 bg-green-600 text-white rounded-lg cursor-default" disabled>
+              <button
+                className="px-3 py-2 bg-green-600 text-white rounded-lg cursor-default"
+                disabled
+              >
                 {currentPage}
               </button>
               {currentPage < totalPages && (
                 <Link
-                  href={`/medicines/generics/${genericId}?page=${currentPage + 1}`}
+                  href={`/medicines/generics/${genericId}?page=${
+                    currentPage + 1
+                  }`}
                   className="px-3 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-lg"
                 >
                   {currentPage + 1}
@@ -105,7 +116,9 @@ export default function MedicinesPage({
               )}
               {currentPage < totalPages - 1 && (
                 <Link
-                  href={`/medicines/generics/${genericId}?page=${currentPage + 2}`}
+                  href={`/medicines/generics/${genericId}?page=${
+                    currentPage + 2
+                  }`}
                   className="px-3 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-lg"
                 >
                   {currentPage + 2}
@@ -113,7 +126,9 @@ export default function MedicinesPage({
               )}
               {currentPage < totalPages && (
                 <Link
-                  href={`/medicines/generics/${genericId}?page=${currentPage + 1}`}
+                  href={`/medicines/generics/${genericId}?page=${
+                    currentPage + 1
+                  }`}
                   className="px-3 py-2 text-white bg-blue-500 hover:bg-blue-700 rounded-lg"
                 >
                   &gt;

@@ -30,9 +30,9 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      medicineData: medicineData.details,
-      blogPosts: blogData,
-      categories: categoriesData,
+      medicineData: medicineData.details || null,
+      blogPosts: blogData || null,
+      categories: categoriesData || null,
     },
   };
 }
