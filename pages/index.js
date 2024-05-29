@@ -10,38 +10,53 @@ import BlogRight from "@/components/aside/BlogRight";
 export async function getServerSideProps() {
   const apikey = process.env.NEXT_PUBLIC_API_KEY;
 
-  // Fetch medicines
-  const medicineResponse = await fetch(
-    `${apiBaseURL}medicine?apikey=${apikey}&page=1&limit=12`
-  );
-  const medicineData = await medicineResponse.json();
+  try {
+    // Fetch medicines
+    const medicineResponse = await fetch(
+      `${apiBaseURL}medicine?apikey=${apikey}&page=1&limit=12`
+    );
+    const medicineData = await medicineResponse.json();
 
-  // Fetch blog posts from WordPress
-  const blogResponse = await fetch(
-    "https://slateblue-barracuda-231194.hostingersite.com/wp-json/wp/v2/posts?per_page=6&_embed"
-  );
-  const blogData = await blogResponse.json();
+    // Fetch blog posts from WordPress
+    const blogResponse = await fetch(
+      "https://slateblue-barracuda-231194.hostingersite.com/wp-json/wp/v2/posts?per_page=6&_embed"
+    );
+    const blogData = await blogResponse.json();
 
-  // Fetch blog categories from WordPress
-  const categoriesResponse = await fetch(
-    "https://slateblue-barracuda-231194.hostingersite.com/wp-json/wp/v2/categories"
-  );
-  const categoriesData = await categoriesResponse.json();
+    // Fetch blog categories from WordPress
+    const categoriesResponse = await fetch(
+      "https://slateblue-barracuda-231194.hostingersite.com/wp-json/wp/v2/categories"
+    );
+    const categoriesData = await categoriesResponse.json();
 
-  return {
-    props: {
-      medicineData: medicineData.details || null,
-      blogPosts: blogData || null,
-      categories: categoriesData || null,
-    },
-  };
+    return {
+      props: {
+        medicineData: medicineData.details || [],
+        blogPosts: blogData || [],
+        categories: categoriesData || [],
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return {
+      props: {
+        medicineData: [],
+        blogPosts: [],
+        categories: [],
+      },
+    };
+  }
 }
 
 export default function Home({ medicineData, blogPosts, categories }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (medicineData && blogPosts && categories) {
+    if (
+      medicineData.length > 0 ||
+      blogPosts.length > 0 ||
+      categories.length > 0
+    ) {
       setIsLoading(false);
     }
   }, [medicineData, blogPosts, categories]);
